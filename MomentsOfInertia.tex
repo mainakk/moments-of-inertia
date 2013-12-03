@@ -1,0 +1,249 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, hyperref}
+\usepackage[margin=1in]{geometry}
+
+\title{Moments of Inertia}
+\author{}
+\date{2013-11-30}
+
+\begin{document}
+\maketitle
+\section*{Notes}
+\begin{enumerate}
+\item \emph{Any} senses \emph{same for all}.
+\item Densities for x-D objects:
+\begin{enumerate}
+\item 0-D object or particles: no definition.
+\item 1-D object like rod: line mass density $\lambda=\frac{dM}{dx}$, $dx$ is differential length element.
+\item Curved 1-D object like curved rod or string: line mass density $\lambda=\frac{dM}{ds}$, $ds$ is differential curved length element.
+\item 2-D object like plate: surface mass density $\sigma=\frac{dM}{dA}$, $dA$ is differential area element.
+\item Curved 2-D object like thin shell: surface mass density $\sigma=\frac{dM}{dS}$, $dS$ is differential curved area element.
+\item 3-D object: volume mass density (or density) $\rho=\frac{dM}{dV}$, $dV$ is differential volume element.
+\end{enumerate}
+\item Moment of inertia must be defined about an axis of rotation.
+\item For a discrete system of $n$ particles with masses $m_i$ and at distances $r_i$ from the axis of rotation, $i=1(1)n$, moment of inertia about the axis of rotation is $\sum\limits_{i=1}\limits^n m_i r_i^2$.
+
+For a continuous body of mass $M$, the moment of inertia about an axis is $\int_M r^2 \,dM$, $r$ is the distance of differential mass element $dM$ from the axis of rotation.
+So, $I_{xx} = \int_M (y^2+z^2) \,dM$, $I_{yy} = \int_M (z^2+x^2) \,dM$, $I_{zz} = \int_M (x^2+y^2) \,dM$.
+\end{enumerate}
+
+\section*{Moments of inertia}
+\begin{enumerate}
+\item \textbf{Homogeneous rod (1-D) of length $L$ and mass $M$, axis of rotation is along any perpendicular to the rod passing through its mid-length}
+
+Fit a Cartesian co-ordinate system with x-axis along the length and origin at mid-length.  Required moment of inertia is $I_{\text{zz}}$.
+
+For 1-D objects we can define the line mass density $\lambda(x) = \frac{dM}{dx}$ which which be constant along the length of the homogeneous rod i.e. $\lambda(x) = \lambda$. So $M = \lambda L$.
+\begin{align*}
+I_\text{zz} &= \int_M x^2 \,dM\\
+&= \int\limits_{-L/2}\limits^{L/2} \lambda x^2\ \,dx\\
+&= \frac{\lambda L^3}{12}\\
+&= \frac{ML^2}{12}
+\end{align*}
+
+What is the moment of inertia at any end along any perpendicular to the rod?
+
+\item \textbf{Homogeneous circular ring (curved 1-D) of radius $R$ and mass $M$, axis of rotation is perpendicular to the plane of ring passing through its center}
+
+Fit a cylindrical co-ordinate system with z-axis along the axis of rotation and origin at center of the ring. Required moment of inertia is $I_{\text{zz}}$.
+
+This is also an 1-D object along the arc-length($s$) direction (think of a curved rod). We can define the line mass density $\lambda(s) = \frac{dM}{ds}$ which will be constant along the arc-length of the homogeneous ring i.e. $\lambda(s) = \lambda$. So $M = \lambda\int_s \,ds = 2\pi\lambda R$.
+\begin{align*}
+I_\text{zz} &= \int_M R^2 \,dM\\
+&= \int_s \lambda R^2 \,ds\\
+&= \int\limits_{0}\limits^{2\pi} \lambda R^2 R\ \,d\theta\\
+&= 2\pi\lambda R^3\\
+&= MR^2
+\end{align*}
+
+Here $ds$ is a differential curved length element spanned from $\theta$ to $\theta+d\theta$. Its length comes $R\,d\theta$.
+
+What is the moment of inertia about any diameter of the ring?
+
+To evaluate $I_{xx}$ or $I_{yy}$ instead of doing integrations we can use \emph{Perpendicular Axis Theorem}.
+
+\textbf{Perpendicular Axis Theorem}: If we fit a Cartesian co-ordinate system in a 2-D object with x-y plane coincident with the plane of the object, z co-ordinate of each point of the body comes zero. So, $I_{xx} = \int_M y^2 \,dM$, $I_{yy} = \int_M x^2 \,dM$, $I_{zz} = \int_M (x^2+y^2) \,dM$. Clearly we see $I_{zz} = I_{xx} + I_{yy}$. This is the \emph{Perpendicular Axis Theorem}. Note that this theorem is valid for 2-D objects and with co-ordinate system fitted in the above manner.
+
+In this example we arrive at $I_{xx} = I_{yy}$ from symmetry (You can rotate the ring with same easiness or hardness about any diameter -- symmetry in this sense. In physical term you can say the mass distribution is symmetric about any diameter.). Using the theorem, $I_{xx} = I_{yy} = \frac{1}{2}I_{zz} = \frac{1}{2}MR^2$.
+
+
+
+\item \textbf{Homogeneous circular disk (2-D) of radius $R$ and mass $M$, axis of rotation is perpendicular to the plane of disk passing through its center}
+
+(Read 5 first.) Fit a cylindrical co-ordinate system with z-axis along the axis of rotation and origin at center of the disk. Required moment of inertia is $I_{\text{zz}}$.
+
+This is a 2-D object for which we can define the surface mass density $\sigma(r, \theta) = \frac{dM}{dA}$ ($dA$ is differential surface area) which will be constant across the surface area of the homogeneous disk ($\sigma(r, \theta) = \sigma$). So $M = \sigma A$.
+
+\begin{align*}
+I_\text{zz} &= \int_M r^2 \,dM\\
+&= \int_A \sigma r^2 \,dA\\
+&= \sigma\int\limits_{\theta=0}\limits^{2\pi}
+\int\limits_{r=0}\limits^{R} r^2 r \,dr \,d\theta\\
+&= \sigma\int\limits_{0}\limits^{2\pi}
+\left(\int\limits_{0}\limits^{R} r^3 \,dr\right)\,d\theta\\
+&= \sigma\int\limits_{0}\limits^{2\pi}
+\frac{R^4}{4} \,d\theta\\
+&= \frac{\pi\sigma R^4}{2}\\
+&= \frac{\sigma AR^2}{2}\\
+&= \frac{MR^2}{2}
+\end{align*}
+
+Here think $dA$ is area of a differential circular strip spanning from $r$ to $r+dr$ and $\theta$ to $\theta+d\theta$. Its area comes $r\,dr\,d\theta$ (think how).
+
+What is the moment of inertia about any diameter of the plate? 
+
+Use \emph{Perpendicular Axis Theorem}.
+
+\item \textbf{Homogeneous annular disk (2-D) of internal radius $R_i$, external radius $R_o$ and mass $M$, axis of rotation is perpendicular to the plane of disk passing through its center}
+
+Very similar to 3, only the limit of $r$ will be $R_i$ to $R_o$.
+
+\item \textbf{Homogeneous rectangular plate (2-D) of length $L$, breadth $B$ and mass $M$, axis of rotation is perpendicular to the plane of disk passing through its center}
+
+Fit a Cartesian co-ordinate system with x-axis along the length, y-axis along the breadth and origin at center of the plate. Required moment of inertia is $I_{\text{zz}}$.
+
+This is a 2-D object for which we can define the surface mass density $\sigma(x, y) = \frac{dM}{dA}$ ($dA$ is differential surface area) which will be constant across the surface area of the homogeneous plate ($\sigma(x, y) = \sigma$). So $M = \sigma A$.
+
+Let $r(x, y)$ be the distance of point $(x, y)$ on the plate from the axis of rotation. $r(x, y) = \sqrt{x^2+y^2}$.
+
+\begin{align*}
+I_\text{zz} &= \int_M r^2 \,dM\\
+&= \int_A \sigma (x^2+y^2) \,dA\\
+&= \sigma\int\limits_{y=-B/2}\limits^{B/2}
+\int\limits_{x=-L/2}\limits^{L/2}(x^2+y^2) \,dx\,dy\\
+&= \sigma\int\limits_{-B/2}\limits^{B/2}
+\left(\int\limits_{-L/2}\limits^{L/2} (x^2+y^2) \,dx\right)\,dy\\
+&= \sigma\int\limits_{-B/2}\limits^{B/2}
+\left(\frac{L^3}{12}+y^2L\right)\,dy\\
+&= \sigma \left(\frac{L^3B}{12}+\frac{LB^3}{12}\right)\\
+&= \frac{\sigma A(L^2+B^2)}{12}\\
+&= \frac{M(L^2+B^2)}{12}
+\end{align*}
+
+Note how area integral is converted into a double integral above, $dA$ can be thought of a differential rectangle of length $dx$ and breadth $dy$.
+
+Also when we are integrating about $x$ (inside parentheses) $y$ is treated as constant.
+
+What are $I_{xx}$, $I_{yy}$ and $I_{xy}$?
+
+\emph{Perpendicular Axis Theorem} will be helpful only for square plates.
+
+\item \textbf{Homogeneous sphere (3-D) of radius $R$ and mass $M$, axis of rotation is along any diameter}
+
+Fit a spherical co-ordinate system with z-axis along the axis of rotation and origin at center of the sphere. Required moment of inertia is $I_{\text{zz}}$.
+
+Let $\varrho(r, \theta, \varphi)$ be the distance of point $(r, \theta, \varphi)$ within the sphere from the axis of rotation. $\varrho(r, \theta, \varphi) = r\sin{\theta}$.
+
+\begin{align*}
+I_\text{zz} &= \int_M \varrho^2 \,dM\\
+&= \rho\int_V r^2 \sin^2{\theta} \,dV\\
+&= \rho\int\limits_{\varphi=0}\limits^{2\pi}
+\int\limits_{\theta=0}\limits^{\pi}
+\int\limits_{r=0}\limits^{R}r^2 \sin^2{\theta}r^2 \sin{\theta} \,dr \,d\theta \,d\varphi\\
+&= \rho\int\limits_0\limits^{2\pi}
+\left(\int\limits_0\limits^{\pi}
+\left(\int\limits_0\limits^{R}r^4 \sin^3{\theta} \,dr\right)\,d\theta\right)\,d\varphi\\
+&= \rho\int\limits_0\limits^{2\pi}
+\left(\int\limits_0\limits^{\pi}
+\frac{R^5}{5} \sin^3{\theta} \,d\theta\right)\,d\varphi\\
+&= \rho\int\limits_0\limits^{2\pi}
+\frac{4R^5}{15}\,d\varphi\\
+&= \frac{8\pi\rho R^5}{15}\\
+&= \frac{2\rho VR^2}{5}\\
+&= \frac{2MR^2}{5}
+\end{align*}
+
+Here $dV$ is imagined as a differential shell spanned from $r$ to $r+dr$, $\theta$ to $\theta+d\theta$ and $\varrho$ to $\varrho+d\varrho$. Its volume comes $r^2 \sin{\theta} \,dr \,d\theta \,d\varphi$ (you could try to prove, but might be difficult).
+
+Also see an alternate derivation (using Cartesian co-ordinate system) at \url{http://en.wikipedia.org/wiki/Moment_of_inertia}.
+
+\item \textbf{Homogeneous thin spherical shell (curved 2-D) of radius $R$ and mass $M$, axis of rotation is along any diameter}
+
+Fit a spherical co-ordinate system with z-axis along the axis of rotation and origin at center of the sphere. Required moment of inertia is $I_{\text{zz}}$.
+
+This is a curved 2-D object for which we can define the surface mass density $\sigma(r, \theta, \varphi) = \frac{dM}{dS}$ ($dS$ is differential curved surface area) which will be constant across the surface area of the homogeneous shell ($\sigma(r, \theta, \varphi) = \sigma$). So $M = \sigma\int_S \,dS = 4\pi\sigma R^2$.
+
+Let $\varrho(r, \theta, \varphi)$ be the distance of point $(r, \theta, \varphi)$ within the sphere from the axis of rotation. $\varrho(r, \theta, \varphi) = R\sin{\theta}$.
+
+\begin{align*}
+I_\text{zz} &= \int_M \varrho^2 \,dM\\
+&= \sigma\int_S R^2 \sin^2{\theta} \,dS\\
+&= \sigma R^2\int\limits_{\varphi=0}\limits^{2\pi}
+\int\limits_{\theta=0}\limits^{\pi}
+\sin^2{\theta}R^2 \sin{\theta} \,d\theta \,d\varphi\\
+&= \sigma R^4\int\limits_0\limits^{2\pi}
+\left(\int\limits_0\limits^{\pi}
+\sin^3{\theta} d\theta\right)\,d\varphi\\
+&= \sigma R^4\int\limits_0\limits^{2\pi}
+\frac{4}{3}\,d\varphi\\
+&= \frac{8\pi\sigma R^4}{3}\\
+&= \frac{2MR^2}{3}
+\end{align*}
+
+Here $dS$ is a differential thin shell element spanned from $\theta$ to $\theta+d\theta$ and $\varrho$ to $\varrho+d\varrho$. Its area comes $R^2 \sin{\theta} \,d\theta \,d\varphi$.
+
+\item \textbf{Homogeneous thick spherical shell (3-D) of internal radius $R_i$, external radius $R_o$ and mass $M$, axis of rotation is along any diameter}
+
+Very similar to 6, only the limit of $r$ will be $R_i$ to $R_o$.
+
+\item \textbf{Homogeneous solid cylinder (3-D) of height $H$, radius $R$ and mass $M$, axis of rotation is along cylinder axis}
+
+Fit a cylindrical co-ordinate system with z-axis along the axis of rotation and origin at mid-height. Required moment of inertia is $I_{\text{zz}}$.
+
+\begin{align*}
+I_\text{zz} &= \int_M r^2 \,dM\\
+&= \rho\int_V r^2 \,dV\\
+&= \rho\int\limits_{z=-H/2}\limits^{H/2}
+\int\limits_{\theta=0}\limits^{2\pi}
+\int\limits_{r=0}\limits^{R}r^2 r\,dr \,d\theta \,dz\\
+&= \rho\int\limits_{-H/2}\limits^{H/2}
+\left(\int\limits_0\limits^{2\pi}
+\left(\int\limits_0\limits^{R}r^3 \,dr\right)\,d\theta\right)\,dz\\
+&= \rho\int\limits_{-H/2}\limits^{H/2}
+\left(\int\limits_0\limits^{2\pi}
+\frac{R^4}{4} \,d\theta\right)\,dz\\
+&= \rho\int\limits_{-H/2}\limits^{H/2}
+\frac{\pi R^4}{2}\,dz\\
+&= \frac{\pi\rho R^4 H}{2}\\
+&= \frac{\rho VR^2}{2}\\
+&= \frac{MR^2}{2}
+\end{align*}
+
+Here $dV$ is a differential shell spanned from $r$ to $r+dr$, $\theta$ to $\theta+d\theta$ and $z$ to $z+dz$. Its volume comes $r \,dr \,d\theta \,dz$.
+
+For moment of inertia about a diameter at mid-height, let $\varrho(r, \theta, z)$ be the distance of point $(r, \theta, z)$ within the cylinder from the axis of rotation. $\varrho(r, \theta, z) = \sqrt{r^2 \sin^2\theta + z^2}$. Just replace $r$ with this $\varrho$ in the above integral to derive this moment of inertia.
+
+\item \textbf{Homogeneous hollow cylinder (curved 2-D) of height $H$, radius $R$ and mass $M$, axis of rotation is along cylinder axis}
+
+Fit a cylindrical co-ordinate system with z-axis along the axis of rotation and origin at mid-height. Required moment of inertia is $I_{\text{zz}}$.
+
+This is a curved 2-D object for which we can define the surface mass density $\sigma(r, \theta, x) = \frac{dM}{dS}$ ($dS$ is differential curved surface area) which will be constant across the surface area of the homogeneous cylinder ($\sigma(r, \theta, z) = \sigma$). So $M = \sigma\int_S \,dS = 2\pi\sigma RH$.
+
+\begin{align*}
+I_\text{zz} &= \int_M r^2 \,dM\\
+&= \sigma\int_V R^2 \,dS\\
+&= \sigma R^2\int\limits_{z=-H/2}\limits^{H/2}
+\int\limits_{\theta=0}\limits^{2\pi}
+R \,d\theta \,dz\\
+&= \sigma R^3\int\limits_{-H/2}\limits^{H/2}
+\left(\int\limits_0\limits^{2\pi}
+\,d\theta\right)\,dz\\
+&= \sigma R^3\int\limits_{-H/2}\limits^{H/2}
+2\pi\,dz\\
+&= 2\pi\sigma R^3 H\\
+&= MR^2
+\end{align*}
+
+Here $dS$ is a differential thin shell element spanned from $\theta$ to $\theta+d\theta$ and $z$ to $z+dz$. Its area comes $R\,d\theta \,dz$.
+
+For moment of inertia about a diameter at mid-height, let $\varrho(r, \theta, z)$ be the distance of point $(r, \theta, z)$ within the cylinder from the axis of rotation. $\varrho(r, \theta, z) = \sqrt{R^2 \sin^2\theta + z^2}$. Just replace $r$ with this $\varrho$ in the above integral to derive this moment of inertia.
+
+\item \textbf{Homogeneous solid cone (3-D) of height $H$, radius $R$ and mass $M$, axis of rotation is along cone axis}
+
+Fit a cylindrical co-ordinate system, derivation could follow 6, you can leave this one, its derivation would be little involved. 
+
+See a derivation here: \url{http://openstudy.com/updates/4ecbc912e4b04e045aea6acd}
+
+\end{enumerate}
+\end{document}
